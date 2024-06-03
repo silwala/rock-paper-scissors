@@ -1,11 +1,8 @@
+
 const playerChoice = document.querySelector("#player-choice");
 const result = document.querySelector("#result");
 const score = document.querySelector("#score");
-updateScoreBoard();
-
-let humanScore = 0;
-let computerScore = 0;
-let tie = 0;
+const winner = document.querySelector("#winner");
 
 playerChoice.addEventListener("click", (e) => {
 
@@ -13,6 +10,19 @@ playerChoice.addEventListener("click", (e) => {
 
     playRound(getComputerChoice(), e.target.attributes.id.value);
 })
+
+const winningScore = 5;
+let humanScore;
+let computerScore;
+let tie;
+
+function initGame(){
+    humanScore = 0;
+    computerScore = 0;
+    tie = 0;
+    result.textContent = '';
+    updateScoreBoard();
+}
 
 function updateScoreBoard(){
     score.textContent = `Player: ${humanScore}\tComputer: ${computerScore}\tTie: ${tie}`;
@@ -26,6 +36,8 @@ function getComputerChoice(){
 }
 
 function playRound(computerChoice, humanChoice){
+
+    winner.textContent = '';
     result.textContent = `player chose: ${humanChoice}\ncomputer chose: ${computerChoice}`
     if(computerChoice == humanChoice){
         result.textContent += "Tie!"
@@ -45,5 +57,23 @@ function playRound(computerChoice, humanChoice){
 }
 
 
+function checkWinner(){
+    let win;
+    if(humanScore === winningScore){
+        win = "player";
+    }
+    else if(computerScore === winningScore){
+        win = "computer";
+    }
+    else {
+        return;
+    }
+
+    winner.textContent = win + " wins!"
+    initGame();
+}
+
+
+initGame();
 
 
