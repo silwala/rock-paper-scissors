@@ -6,6 +6,7 @@ const computerResult = document.querySelector("#computer-result");
 const ovrlResult = document.querySelector("#ovrl-result");
 const score = document.querySelector("#score");
 const winner = document.querySelector("#winner");
+const playAgain = document.querySelector("#play-again");
 
 playerChoice.addEventListener("click", (e) => {
 
@@ -13,6 +14,13 @@ playerChoice.addEventListener("click", (e) => {
 
     playRound(getComputerChoice(), e.target.attributes.id.value);
 })
+
+playAgain.addEventListener("click", () => {
+    winner.removeChild(winner.firstChild);
+    playerResult.removeChild(playerResult.firstChild);
+    computerResult.removeChild(computerResult.firstChild);
+    initGame();
+});
 
 const winningScore = 5;
 let humanScore;
@@ -23,6 +31,10 @@ function initGame(){
     humanScore = 0;
     computerScore = 0;
     tie = 0;
+    playerChoice.style.display = 'flex';
+    result.style.display = 'none';
+    versus.style.display = 'none';
+    winner.style.display = 'none';
     updateScoreBoard();
 }
 
@@ -39,18 +51,17 @@ function getComputerChoice(){
 
 function playRound(computerChoice, humanChoice){
 
-    winner.textContent = '';
     if(computerChoice == humanChoice){
         ovrlResult.textContent = "Tie";
 
         tie++;
     }
     else if (computerChoice == "rock" && humanChoice == "scissors" || computerChoice == "paper" && humanChoice == "rock" || computerChoice == "scissors" && humanChoice == "paper"){
-        ovrlResult.textContent = "Computer won the round!";
+        ovrlResult.textContent = "Computer wins the round!";
         computerScore++;
     }
     else{
-        ovrlResult.textContent = "You won the round!";
+        ovrlResult.textContent = "You win the round!";
         humanScore++;
     }
 
@@ -64,6 +75,7 @@ function showResult(computerChoice, humanChoice){
     playerChoice.style.display = 'none';
     result.style.display = 'flex';
     versus.style.display = 'block';
+
     let playerChoiceImage = document.createElement('img');
     playerChoiceImage.src = `images/${humanChoice}.png`
     playerResult.appendChild(playerChoiceImage);
@@ -71,14 +83,6 @@ function showResult(computerChoice, humanChoice){
     let computerChoiceImage = document.createElement('img');
     computerChoiceImage.src = `images/${computerChoice}.png`
     computerResult.appendChild(computerChoiceImage);
-
-    setTimeout(() => {
-        playerChoiceImage.remove();
-        computerChoiceImage.remove();
-        playerChoice.style.display = 'flex';
-        result.style.display = 'none';
-        versus.style.display = 'none';
-    }, 1500)
 }
 
 function showChoices(){
@@ -89,19 +93,30 @@ function showChoices(){
 function checkWinner(){
     let win;
     if(humanScore === winningScore){
-        win = "player";
+        win = "You";
     }
     else if(computerScore === winningScore){
-        win = "computer";
+        win = "Computer";
     }
     else {
+        setTimeout(() => {
+            playerChoice.style.display = 'flex';
+            result.style.display = 'none';
+            versus.style.display = 'none';
+            playerResult.removeChild(playerResult.firstChild);
+            computerResult.removeChild(computerResult.firstChild);
+        }, 1500);
         return;
     }
 
-    winner.textContent = win + " wins!"
-    initGame();
+    showWinner(win);
 }
 
+function showWinner(win){
+    winner.style.display = 'flex';
+    let gameWinner = document.createTextNode(`${win} won the game!`);
+    winner.prepend(gameWinner);
+}
 
 initGame();
 
