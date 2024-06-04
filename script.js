@@ -1,6 +1,9 @@
-
 const playerChoice = document.querySelector("#player-choice");
 const result = document.querySelector("#result");
+const versus = document.querySelector("#versus");
+const playerResult = document.querySelector("#player-result");
+const computerResult = document.querySelector("#computer-result");
+const ovrlResult = document.querySelector("#ovrl-result");
 const score = document.querySelector("#score");
 const winner = document.querySelector("#winner");
 
@@ -20,7 +23,6 @@ function initGame(){
     humanScore = 0;
     computerScore = 0;
     tie = 0;
-    // result.textContent = '';
     updateScoreBoard();
 }
 
@@ -38,22 +40,49 @@ function getComputerChoice(){
 function playRound(computerChoice, humanChoice){
 
     winner.textContent = '';
-    result.textContent = `player chose: ${humanChoice}\ncomputer chose: ${computerChoice}`
     if(computerChoice == humanChoice){
-        result.textContent += "Tie!"
+        ovrlResult.textContent = "Tie";
+
         tie++;
     }
     else if (computerChoice == "rock" && humanChoice == "scissors" || computerChoice == "paper" && humanChoice == "rock" || computerChoice == "scissors" && humanChoice == "paper"){
-        result.textContent += "computer wins the round!";
+        ovrlResult.textContent = "Computer won the round!";
         computerScore++;
     }
     else{
-        result.textContent += "player wins the round!";
+        ovrlResult.textContent = "You won the round!";
         humanScore++;
     }
 
+    showResult(computerChoice, humanChoice);
     updateScoreBoard();
     checkWinner();
+}
+
+function showResult(computerChoice, humanChoice){
+
+    playerChoice.style.display = 'none';
+    result.style.display = 'flex';
+    versus.style.display = 'block';
+    let playerChoiceImage = document.createElement('img');
+    playerChoiceImage.src = `images/${humanChoice}.png`
+    playerResult.appendChild(playerChoiceImage);
+    
+    let computerChoiceImage = document.createElement('img');
+    computerChoiceImage.src = `images/${computerChoice}.png`
+    computerResult.appendChild(computerChoiceImage);
+
+    setTimeout(() => {
+        playerChoiceImage.remove();
+        computerChoiceImage.remove();
+        playerChoice.style.display = 'flex';
+        result.style.display = 'none';
+        versus.style.display = 'none';
+    }, 1500)
+}
+
+function showChoices(){
+
 }
 
 

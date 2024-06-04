@@ -19,57 +19,71 @@ body{
 
 #player-choice{
     height: 100%;
-    display: none;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    gap: 20px;
 }
 
 .choice{
-    height: 80px;
-    width: 160px;
     font-size: 2em;
-    background-color: rgb(117, 0, 252);
     border: none;
-    border-radius: 10px;
+    background: none;
     color: white;
     transition: .3s;
+    height: 400px;
 }
+
 
 .choice:hover{
     filter: brightness(110%);
     transform: scale(105%);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.178);
 }
 
 #result{
-    outline: 1px solid black;
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
 .indiv-results{
     flex: 1 1 75%;
-    background-color: aqua;
-
     display: flex;
 }
 
-.player-result{
-    height: 100%;
-    flex: 1 1 0%;
-    background-color: red;
+.indiv-results img{
+    height: 400px;
 }
 
-.computer-result{
-    height: 100%;
+#player-result{
     flex: 1 1 0%;
 }
 
-.ovrl-result{
+
+#computer-result{
+    flex: 1 1 0%;
+}
+
+#ovrl-result{
     flex: 1 1 25%;
-    background-color: blue;
+}
+
+.inner-result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+#versus{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    font-weight: 800;
+    font-style: italic;
 }
 
 #winner{

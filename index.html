@@ -10,17 +10,18 @@
     <div id="score"></div>
     <div class="game">
         <div id="player-choice">
-            <button id="rock" class="choice">Rock</button>
-            <button id="paper" class="choice">Paper</button>
-            <button id="scissors" class="choice">Scissors</button>
+            <img src="images/rock.png" alt="rock" class="choice" id="rock">
+            <img src="images/paper.png" alt="paper" class="choice" id="paper">
+            <img src="images/scissors.png" alt="scissors" class="choice" id="scissors">
         </div>
 
         <div id="result">
             <div class="indiv-results">
-                <div class="player-result"></div>
-                <div class="computer-result"></div>
+                <div id="player-result" class="inner-result"></div>
+                <div id="versus">VS</div>
+                <div id="computer-result" class="inner-result"></div>
             </div>
-            <div class="ovrl-result"></div>
+            <div id="ovrl-result" class="inner-result"></div>
         </div>
         <div id="winner"></div>
     </div>
