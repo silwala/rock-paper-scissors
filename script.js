@@ -25,7 +25,7 @@ function initGame(){
 }
 
 function updateScoreBoard(){
-    score.textContent = `Player: ${humanScore}\tComputer: ${computerScore}\tTie: ${tie}`;
+    score.textContent = `Player: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
 }
 
 function getComputerChoice(){

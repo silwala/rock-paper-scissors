@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#score{
+    height: 10vh;
+    font-size: 1.75em;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.game{
+    height: 90vh;
+}
+
+#player-choice{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.choice{
+    height: 80px;
+    width: 160px;
+    font-size: 2em;
+    background-color: rgb(117, 0, 252);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    transition: .3s;
+}
+
+.choice:hover{
+    filter: brightness(110%);
+    transform: scale(105%);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.178);
+}
+
+
+
+
