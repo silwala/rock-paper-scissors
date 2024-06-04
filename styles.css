@@ -18,8 +18,8 @@ body{
 }
 
 #player-choice{
-    height: 80%;
-    display: flex;
+    height: 100%;
+    display: none;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -42,6 +42,39 @@ body{
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.178);
 }
 
+#result{
+    outline: 1px solid black;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.indiv-results{
+    flex: 1 1 75%;
+    background-color: aqua;
+
+    display: flex;
+}
+
+.player-result{
+    height: 100%;
+    flex: 1 1 0%;
+    background-color: red;
+}
+
+.computer-result{
+    height: 100%;
+    flex: 1 1 0%;
+}
+
+.ovrl-result{
+    flex: 1 1 25%;
+    background-color: blue;
+}
+
+#winner{
+    display: none;
+}
 
 
 

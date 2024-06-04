@@ -20,7 +20,7 @@ function initGame(){
     humanScore = 0;
     computerScore = 0;
     tie = 0;
-    result.textContent = '';
+    // result.textContent = '';
     updateScoreBoard();
 }
 
